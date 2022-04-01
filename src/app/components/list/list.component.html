@@ -1,0 +1,68 @@
+<ng-container *ngIf="!loading">
+  <div class="container my-5">
+    <div class="row">
+      <div class="col-xl-12 ">
+        <div class="row" style="margin-bottom: 22px;">
+          <h1 class="mb-4">Pokedex</h1>
+          <div *ngFor="let pokemon of pokemons" class="col-md-4">
+            <div class="card mb-3 bg-{{pokemon.main_type}}" (click)="openDialog(pokemon)">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-6 col-sm-6">
+                    <h3 class="card-title">{{pokemon.name | titlecase}}</h3>
+                    <span *ngFor="let type of pokemon.types"
+                      class="badge border rounded-pill me-1 bg-{{pokemon.main_type}}">
+                      {{type.type.name | titlecase}}
+                    </span>
+                  </div>
+                  <div class="col-6 col-sm-6">
+                    <img src="{{pokemon.img}}" class="img-fluid" alt="...">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm text-center">
+              <button (click)="getPokemonList(1)" [disabled]="cargando" type="button" class="btn btn-outline-dark">
+                Load 1
+              </button>
+            </div>
+            <div class="col-sm text-center">
+              <button (click)="getPokemonList(5)" [disabled]="cargando" type="button" class="btn btn-outline-dark">
+                Load 5
+              </button>
+            </div>
+            <div class="col-sm text-center">
+              <button (click)="getPokemonList(10)" [disabled]="cargando" type="button" class="btn btn-outline-dark">
+                Load 10
+              </button>
+            </div>
+            <div class="col-sm text-center">
+              <button (click)="getPokemonList(20)" [disabled]="cargando" type="button" class="btn btn-outline-dark">
+                Load 20
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="loading">
+
+  <div class="container my-5">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2">
+        <div class="row">
+          <h1 class="mb-4">Pokedex</h1>
+          <mat-progress-spinner class="example-margin" [color]="color" [mode]="mode" [value]="value">
+          </mat-progress-spinner>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</ng-container>

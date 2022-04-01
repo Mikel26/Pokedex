@@ -1,0 +1,251 @@
+<h1 mat-dialog-title>
+  {{data.name | titlecase}}
+</h1>
+<mat-dialog-content class="mat-typography" style="max-height:75vh">
+  <ng-container *ngIf="pokemon">
+    <div class="bg bg-{{pokemon.main_type}} py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8 offset-sm-2">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="mt-2">
+                  <h1>{{pokemon.name | titlecase}}</h1>
+                  <span *ngFor="let type of pokemon.types"
+                    class="badge border rounded-pill me-1 bg-{{pokemon.main_type}}">
+                    {{type.type.name | titlecase}}
+                  </span>
+                </div>
+
+                <ul class="list-group list-group-flush mt-4" style="width: 20rem;">
+                  <li class="list-group-item bg-transparent">Experience <b
+                      class="float-end">{{pokemon.base_experience}}</b></li>
+                  <li class="list-group-item bg-transparent">Height <b class="float-end">{{pokemon.height / 10}} m</b>
+                  </li>
+                  <li class="list-group-item bg-transparent">Weight <b class="float-end">{{pokemon.weight / 10}} kg
+                      ({{pokemon.weight * 0.2205 | number:'1.0-1'}} lbs) </b>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-sm-6">
+                <img src="{{pokemon.img}}" alt="" class="img-fluid d-block mx-auto" style="width: 300px;">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="custom-shape-divider-bottom">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path
+            d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+            class="shape-fill"></path>
+        </svg>
+      </div>
+    </div>
+
+    <div class="container my-3">
+      <div class="row">
+        <div class="col-sm-8 offset-sm-2">
+
+          <!-- evolutions -->
+          <div class="row" *ngIf="evolutions.length > 1">
+            <div class="card-tittle">
+              <h2>
+                Evolution chain:
+              </h2>
+            </div>
+          </div>
+          <div class="row" *ngIf="evolutions.length > 1">
+            <div *ngFor="let evolution of evolutions" class="col-4 mb-3">
+              <div class="card" (click)="openPokemon(evolution)">
+                <div class="card-body border-{{evolution.main_type}}">
+                  <h4 class="card-title text-center mb-3">
+                    {{evolution.name | titlecase}}
+                  </h4>
+                  <img src="{{evolution.img}}" alt="" class="img-fluid d-block mx-auto" style="width: 150px;">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- damages -->
+          <!-- double damage -->
+          <div class="row" *ngIf="double_damage_from.length > 0">
+            <div class="card-tittle">
+              <h2>
+                Double damage from:
+              </h2>
+            </div>
+            <div *ngFor="let doubleDamage of double_damage_from" class="col-sm mb-3">
+              <div class="card bg-{{doubleDamage.name}} ">
+                <div class="card-body">
+                  <h4 class="text-center mb-3" style="margin: 0px !important;">
+                    {{doubleDamage.name | titlecase}}
+                  </h4>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row" *ngIf="double_damage_to.length > 0">
+            <div class="card-tittle">
+              <h2>
+                Double damage to:
+              </h2>
+            </div>
+            <div *ngFor="let doubleDamage of double_damage_to" class="col-sm mb-3">
+              <div class="card bg-{{doubleDamage.name}} ">
+                <div class="card-body">
+                  <h4 class="text-center mb-3" style="margin: 0px !important;">
+                    {{doubleDamage.name | titlecase}}
+                  </h4>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- half damages -->
+          <div class="row" *ngIf="half_damage_from.length > 0">
+            <div class="card-tittle">
+              <h2>
+                Half damage from:
+              </h2>
+            </div>
+            <div *ngFor="let halfDamage of half_damage_from" class="col-sm mb-3">
+              <div class="card bg-{{halfDamage.name}} ">
+                <div class="card-body">
+                  <h4 class="text-center mb-3" style="margin: 0px !important;">
+                    {{halfDamage.name | titlecase}}
+                  </h4>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row" *ngIf="half_damage_to.length > 0">
+            <div class="card-tittle">
+              <h2>
+                Half damage to:
+              </h2>
+            </div>
+            <div *ngFor="let halfDamage of half_damage_to" class="col-sm mb-3">
+              <div class="card bg-{{halfDamage.name}} ">
+                <div class="card-body">
+                  <h4 class="text-center mb-3" style="margin: 0px !important;">
+                    {{halfDamage.name | titlecase}}
+                  </h4>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- no damages -->
+          <div class="row" *ngIf="no_damage_from.length > 0">
+            <div class="card-tittle">
+              <h2>
+                No damage from:
+              </h2>
+            </div>
+            <div *ngFor="let noDamage of no_damage_from" class="col-sm mb-3">
+              <div class="card bg-{{noDamage.name}} ">
+                <div class="card-body">
+                  <h4 class="text-center mb-3" style="margin: 0px !important;">
+                    {{noDamage.name | titlecase}}
+                  </h4>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row" *ngIf="no_damage_to.length > 0">
+            <div class="card-tittle">
+              <h2>
+                No damage to:
+              </h2>
+            </div>
+            <div *ngFor="let noDamage of no_damage_to" class="col-sm mb-3">
+              <div class="card bg-{{noDamage.name}} ">
+                <div class="card-body">
+                  <h4 class="text-center mb-3" style="margin: 0px !important;">
+                    {{noDamage.name | titlecase}}
+                  </h4>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- stats -->
+          <div class="card mb-3">
+            <h4 class="card-header">Stats</h4>
+            <div class="card-body">
+              <div *ngFor="let stat of pokemon.stats" class="row mt-3">
+                <div class="col-sm-2">
+                  <h5 class="text-sm-end mt-1">{{stat.stat.name | titlecase}}</h5>
+                </div>
+                <div class="col-sm-10">
+                  <div class="progress" style="height: 30px">
+                    <div class="progress-bar progress-bar-striped bg-{{pokemon.main_type}}" role="progressbar"
+                      style="height: 30px;" [style.width]="stat.base_stat + '%'" aria-valuemin="0" aria-valuemax="50">
+                      <b>{{stat.base_stat}}</b>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- abilities -->
+          <div class="card mb-3">
+            <h4 class="card-header">Abilities
+              <span style="float: right;" class="badge bg-{{pokemon.main_type}} rounded-pill">
+                {{pokemon.abilities.length}}
+              </span>
+            </h4>
+            <ul class="list-group list-group-flush">
+              <li *ngFor="let ability of pokemon.abilities" class="list-group-item">
+                {{ability.ability.name | titlecase}}
+              </li>
+            </ul>
+          </div>
+
+          <!-- moves -->
+          <div class="card mb-3">
+            <h4 class="card-header">
+              Moves
+              <span style="float: right;" class="badge bg-{{pokemon.main_type}} rounded-pill">
+                {{pokemon.moves.length}}
+              </span>
+            </h4>
+
+            <div class="container">
+              <div class="row">
+                <div *ngFor="let move of pokemon.moves" class="col-3">
+                  {{move.move.name | titlecase}}
+                </div>
+              </div>
+            </div>
+
+            <!-- <ul class="list-group list-group-horizontal">
+              <li *ngFor="let move of pokemon.moves" class="list-group-item">
+                {{move.move.name | titlecase}}
+              </li>
+            </ul> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="position-absolute top-0 start-0">
+      <a class="btn btn-lg text-white" [routerLink]="['/']" routerLinkActive="active">
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-arrow-left"
+          viewBox="0 0 16 16">
+          <path fill-rule="evenodd"
+            d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+        </svg>
+      </a>
+    </div> -->
+  </ng-container>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button type="button" class="btn bg-{{data.main_type}}" mat-dialog-close>Close</button>
+</mat-dialog-actions>

@@ -1,1 +1,339 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --bs-blue: #0d6efd;
+  --bs-indigo: #6610f2;
+  --bs-purple: #6f42c1;
+  --bs-pink: #d63384;
+  --bs-red: #dc3545;
+  --bs-orange: #fd7e14;
+  --bs-yellow: #ffc107;
+  --bs-green: #198754;
+  --bs-teal: #20c997;
+  --bs-cyan: #0dcaf0;
+  --bs-white: #fff;
+  --bs-gray: #6c757d;
+  --bs-gray-dark: #343a40;
+  --bs-primary: #0d6efd;
+  --bs-secondary: #6c757d;
+  --bs-success: #198754;
+  --bs-info: #0dcaf0;
+  --bs-warning: #ffc107;
+  --bs-danger: #dc3545;
+  --bs-light: #f8f9fa;
+  --bs-dark: #212529;
+  --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+}
+
+
+.bg {
+  position: relative;
+}
+
+.custom-shape-divider-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 50px;
+}
+
+.custom-shape-divider-top {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.custom-shape-divider-top svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 30px;
+}
+
+.custom-shape-divider-bottom .shape-fill,
+.custom-shape-divider-top .shape-fill {
+  fill: #FFFFFF;
+}
+
+.card {
+  cursor: pointer;
+}
+
+.bg-normal {
+  background-color: #A8A77A;
+  color: #fff;
+}
+
+.bg-fire {
+  background-color: #EE8130;
+  color: #fff;
+}
+
+.bg-water {
+  background-color: #6390F0;
+  color: #fff;
+}
+
+.bg-electric {
+  background-color: #F7D02C;
+  color: #343a40;
+}
+
+.bg-grass {
+  background-color: #7AC74C;
+  color: #fff;
+}
+
+.bg-ice {
+  background-color: #96D9D6;
+  color: #343a40;
+}
+
+.bg-fighting {
+  background-color: #C22E28;
+  color: #fff;
+}
+
+.bg-poison {
+  background-color: #A33EA1;
+  color: #fff;
+}
+
+.bg-ground {
+  background-color: #E2BF65;
+  color: #343a40;
+}
+
+.bg-flying {
+  background-color: #A98FF3;
+  color: #fff;
+}
+
+.bg-psychic {
+  background-color: #F95587;
+  color: #fff;
+}
+
+.bg-bug {
+  background-color: #A6B91A;
+  color: #343a40;
+}
+
+.bg-rock {
+  background-color: #B6A136;
+  color: #fff;
+}
+
+.bg-ghost,
+.bg-shadow {
+  background-color: #735797;
+  color: #fff;
+}
+
+.bg-dragon {
+  background-color: #6F35FC;
+  color: #fff;
+}
+
+.bg-dark {
+  background-color: #705746;
+  color: #fff;
+}
+
+.bg-steel {
+  background-color: #B7B7CE;
+  color: #fff;
+}
+
+.bg-fairy {
+  background-color: #D685AD;
+  color: #fff;
+}
+
+.bg-unknown {
+  background-color: #aaa;
+  color: #fff;
+}
+
+.border-normal {
+  border: 1px solid #A8A77A;
+}
+
+.border-fire {
+  border: 1px solid #EE8130;
+}
+
+.border-water {
+  border: 1px solid #6390F0;
+}
+
+.border-electric {
+  border: 1px solid #F7D02C;
+}
+
+.border-grass {
+  border: 1px solid #7AC74C;
+}
+
+.border-ice {
+  border: 1px solid #96D9D6;
+}
+
+.border-fighting {
+  border: 1px solid #C22E28;
+}
+
+.border-poison {
+  border: 1px solid #A33EA1;
+}
+
+.border-ground {
+  border: 1px solid #E2BF65;
+}
+
+.border-flying {
+  border: 1px solid #A98FF3;
+}
+
+.border-psychic {
+  border: 1px solid #F95587;
+}
+
+.border-bug {
+  border: 1px solid #A6B91A;
+}
+
+.border-rock {
+  border: 1px solid #B6A136;
+}
+
+.border-ghost,
+.border-shadow {
+  border: 1px solid #735797;
+}
+
+.border-dragon {
+  border: 1px solid #6F35FC;
+}
+
+.border-dark {
+  border: 1px solid #705746;
+}
+
+.border-steel {
+  border: 1px solid #B7B7CE;
+}
+
+.border-fairy {
+  border: 1px solid #D685AD;
+}
+
+.border-unknown {
+  border: 1px solid #aaa;
+}
+
+.border-normal:hover {
+  background-color: #A8A77A;
+}
+
+.border-fire:hover {
+  background-color: #EE8130;
+}
+
+.border-water:hover {
+  background-color: #6390F0;
+}
+
+.border-electric:hover {
+  background-color: #F7D02C;
+}
+
+.border-grass:hover {
+  background-color: #7AC74C;
+}
+
+.border-ice:hover {
+  background-color: #96D9D6;
+}
+
+.border-fighting:hover {
+  background-color: #C22E28;
+}
+
+.border-poison:hover {
+  background-color: #A33EA1;
+}
+
+.border-ground:hover {
+  background-color: #E2BF65;
+}
+
+.border-flying:hover {
+  background-color: #A98FF3;
+}
+
+.border-psychic:hover {
+  background-color: #F95587;
+}
+
+.border-bug:hover {
+  background-color: #A6B91A;
+}
+
+.border-rock:hover {
+  background-color: #B6A136;
+}
+
+.border-ghost:hover,
+.border-shadow:hover {
+  background-color: #735797;
+}
+
+.border-dragon:hover {
+  background-color: #6F35FC;
+}
+
+.border-dark:hover {
+  background-color: #705746;
+}
+
+.border-steel:hover {
+  background-color: #B7B7CE;
+}
+
+.border-fairy:hover {
+  background-color: #D685AD;
+}
+
+.border-unknown:hover {
+  background-color: #aaa;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* selector CSS para que el usuario no seleccione texto */
+html {
+  user-select: none;
+}
